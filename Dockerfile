@@ -8,3 +8,14 @@ RUN npm run build && \
     npm install && \
     npm cache clean --force
 CMD ["npm", "run", "start"]
+
+LABEL \
+      com.redhat.component="trusted-artifact-signer-rekor-ui" \
+      name="trusted-artifact-signer-rekor-ui" \
+      version="0.0.1" \
+      summary="User Interface for checking Rekor Entries" \
+      description="Provides a user interface for checking Rekor Entries through an Node App" \
+      io.k8s.description="Provides a user interface for checking Rekor Entries through an Node App" \
+      io.k8s.display-name="Provides a user interface for checking Rekor Entries through an Node App" \
+      io.openshift.tags="rekor-ui, rekor, cli, rhtas, trusted, artifact, signer, sigstore" \
+      maintainer="trusted-artifact-signer@redhat.com"
