@@ -4,8 +4,8 @@ COPY . .
 USER root
 RUN echo "export PATH=${PATH}:$HOME/node_modules/.bin" >> ~/.bashrc
 EXPOSE 3000
-RUN npm run build && \
-    npm install && \
+RUN npm install --ignore-scripts && \
+    npm run build && \
     npm cache clean --force
 CMD ["npm", "run", "start"]
 
