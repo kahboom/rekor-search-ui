@@ -147,7 +147,7 @@ export function Entry({ entry }: { entry: LogEntry }) {
 	}
 
 	return (
-		<Card style={{ marginTop: "2em" }}>
+		<Card style={{ margin: "1.5em auto 2em" }}>
 			<CardBody>
 				<Text
 					component={TextVariants.h2}
@@ -199,7 +199,7 @@ export function Entry({ entry }: { entry: LogEntry }) {
 				{parsed}
 				<Panel
 					style={{
-						marginTop: "1em",
+						margin: "0.75em auto",
 					}}
 				>
 					<>
