@@ -1,3 +1,5 @@
+"use client";
+
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
@@ -15,13 +17,13 @@ import {
 	ToolbarGroup,
 	ToolbarItem,
 } from "@patternfly/react-core";
-import { RekorClientProvider } from "../modules/api/context";
-import { Explorer } from "../modules/components/Explorer";
-import { Settings } from "../modules/components/Settings";
+import { RekorClientProvider } from "../../modules/api/context";
+import { Explorer } from "../../modules/components/Explorer";
+import { Settings } from "../../modules/components/Settings";
 import { CogIcon, GithubIcon } from "@patternfly/react-icons";
 import Link from "next/link";
 import Image from "next/image";
-import NOSSRWrapper from "../modules/utils/noSSR";
+import NOSSRWrapper from "../../modules/utils/noSSR";
 
 const Home: NextPage = () => {
 	const [settingsOpen, setSettingsOpen] = useState(false);
@@ -120,9 +122,9 @@ const Home: NextPage = () => {
 	);
 };
 
-const PageComponent: NextPage = () => (
+const HomePageClient: NextPage = () => (
 	<RekorClientProvider>
 		<Home />
 	</RekorClientProvider>
 );
-export default PageComponent;
+export default HomePageClient;

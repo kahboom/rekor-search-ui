@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { ApiError, RekorError } from "rekor";
 import {
@@ -104,6 +104,8 @@ export function Explorer() {
 	const [data, setData] = useState<RekorEntries>();
 	const [error, setError] = useState<unknown>();
 	const [loading, setLoading] = useState(false);
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
 	useEffect(() => {
 		async function fetch() {
@@ -124,31 +126,32 @@ export function Explorer() {
 
 	const setQueryParams = useCallback(
 		(formInputs: FormInputs) => {
-			router.push(
-				{
-					pathname: router.pathname,
-					query: {
-						[formInputs.attribute]: formInputs.value,
-					},
-				},
-				`/?${formInputs.attribute}=${formInputs.value}`,
-				{ shallow: true },
-			);
+			router.push(`${pathname}?${formInputs.attribute}=${formInputs.value}`);
+
+			// router.push(
+			// 	{
+			// 		pathname: { pathname },
+			// 		query: {
+			// 			[formInputs.attribute]: formInputs.value,
+			// 		},
+			// 	},
+			// 	`/?${formInputs.attribute}=${formInputs.value}`,
+			// );
 		},
 		[router],
 	);
 
 	useEffect(() => {
-		const attribute = Object.keys(router.query).find(key =>
+		const attribute = Object.keys(searchParams).find(key =>
 			isAttribute(key),
 		) as Attribute | undefined;
-		const value = attribute && router.query[attribute];
+		const value = attribute && searchParams.get(attribute);
 
 		if (!value || Array.isArray(value)) {
 			return;
 		}
 		setFormInputs({ attribute, value });
-	}, [router.query]);
+	}, [searchParams]);
 
 	useEffect(() => {
 		if (formInputs) {
