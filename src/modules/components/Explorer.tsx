@@ -138,7 +138,7 @@ export function Explorer() {
 			// 	`/?${formInputs.attribute}=${formInputs.value}`,
 			// );
 		},
-		[router],
+		[pathname, router],
 	);
 
 	useEffect(() => {
