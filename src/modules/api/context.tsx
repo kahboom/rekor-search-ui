@@ -7,6 +7,7 @@ import {
 	useState,
 } from "react";
 import { RekorClient } from "rekor";
+import { getRekorEndpoint } from "@/app/actions";
 
 export interface RekorClientContext {
 	client: RekorClient;
@@ -22,8 +23,16 @@ export const RekorClientProvider: FunctionComponent<PropsWithChildren<{}>> = ({
 	children,
 }) => {
 	const [baseUrl, setBaseUrl] = useState<string>();
+	const rekorEndpoint = getRekorEndpoint();
+
+	console.log("rekorEndpoint from server action: ", rekorEndpoint);
 
 	const context: RekorClientContext = useMemo(() => {
+		console.log(
+			"$NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN: ",
+			process.env.NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN,
+		);
+
 		/*
 		Using the Next.js framework, the NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN env variable requires
 		a NEXT_PUBLIC_* prefix to make the value of the variable accessible to the browser.
@@ -33,6 +42,11 @@ export const RekorClientProvider: FunctionComponent<PropsWithChildren<{}>> = ({
 		if (baseUrl === undefined && process.env.NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN) {
 			setBaseUrl(process.env.NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN);
 		}
+		if (rekorEndpoint) {
+			setBaseUrl(rekorEndpoint);
+		}
+
+		console.log("baseUrl: ", baseUrl);
 
 		return {
 			client: new RekorClient({ BASE: baseUrl }),
