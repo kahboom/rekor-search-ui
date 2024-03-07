@@ -122,8 +122,10 @@ const Home: NextPage = () => {
 	);
 };
 
-const HomePageClient: NextPage = () => (
-	<RekorClientProvider>
+const HomePageClient: NextPage<{ rekorEndpoint: string | undefined }> = ({
+	rekorEndpoint,
+}) => (
+	<RekorClientProvider rekorEndpoint={rekorEndpoint}>
 		<Home />
 	</RekorClientProvider>
 );

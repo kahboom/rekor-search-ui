@@ -7,7 +7,6 @@ import {
 	useState,
 } from "react";
 import { RekorClient } from "rekor";
-import { getRekorEndpoint } from "@/app/actions";
 
 export interface RekorClientContext {
 	client: RekorClient;
@@ -19,11 +18,10 @@ export const RekorClientContext = createContext<RekorClientContext | undefined>(
 	undefined,
 );
 
-export const RekorClientProvider: FunctionComponent<PropsWithChildren<{}>> = ({
-	children,
-}) => {
+export const RekorClientProvider: FunctionComponent<
+	PropsWithChildren<{ rekorEndpoint?: string }>
+> = ({ children, rekorEndpoint }) => {
 	const [baseUrl, setBaseUrl] = useState<string>();
-	const rekorEndpoint = getRekorEndpoint();
 
 	console.log("rekorEndpoint from server action: ", rekorEndpoint);
 
