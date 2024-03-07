@@ -23,7 +23,7 @@ export const RekorClientProvider: FunctionComponent<
 > = ({ children, rekorEndpoint }) => {
 	const [baseUrl, setBaseUrl] = useState<string>();
 
-	console.log("rekorEndpoint from server action: ", rekorEndpoint);
+	console.log("\nrekorEndpoint from server action: ", rekorEndpoint);
 
 	const context: RekorClientContext = useMemo(() => {
 		console.log(
@@ -51,7 +51,7 @@ export const RekorClientProvider: FunctionComponent<
 			baseUrl,
 			setBaseUrl,
 		};
-	}, [baseUrl]);
+	}, [baseUrl, rekorEndpoint]);
 
 	return (
 		<RekorClientContext.Provider value={context}>

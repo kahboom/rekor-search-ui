@@ -142,15 +142,15 @@ export function Explorer() {
 	);
 
 	useEffect(() => {
-		const attribute = Object.keys(searchParams).find(key =>
-			isAttribute(key),
-		) as Attribute | undefined;
-		const value = attribute && searchParams.get(attribute);
-
-		if (!value || Array.isArray(value)) {
-			return;
-		}
-		setFormInputs({ attribute, value });
+		// const attribute = Object.keys(searchParams).find(key =>
+		// 	isAttribute(key),
+		// ) as Attribute | undefined;
+		// const value = attribute && searchParams.get(attribute);
+		//
+		// if (!value || Array.isArray(value)) {
+		// 	return;
+		// }
+		// setFormInputs({ attribute, value });
 	}, [searchParams]);
 
 	useEffect(() => {
