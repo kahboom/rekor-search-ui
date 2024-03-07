@@ -5,5 +5,7 @@ NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN=http://rekor-server.rekor-system.svc.cluster.lo
 # Export the NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN as an environment variable
 export NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN
 
+echo "NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN is = $NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN"
+
 # Run npm start
 exec npm start

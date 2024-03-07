@@ -7,6 +7,7 @@ RUN echo "export PATH=${PATH}:$HOME/node_modules/.bin" >> ~/.bashrc && \
     npm install --ignore-scripts && \
     npm run build && \
     chmod -R 777 /opt/app-root/src/.npm && \
+    echo "NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN is set to $NEXT_PUBLIC_REKOR_DEFAULT_DOMAIN" && \
     npm cache clean --force
 USER 1001
 CMD ["npm", "run", "start"]
