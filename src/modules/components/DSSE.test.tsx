@@ -7,6 +7,7 @@ jest.mock("../x509/decode", () => ({
 	decodex509: decodex509Mock,
 }));
 
+import { RekorClientProvider } from "../api/context";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { DSSEViewer } from "./DSSE";
@@ -37,7 +38,11 @@ describe("DSSEViewer Component", () => {
 	};
 
 	it("renders without crashing", () => {
-		render(<DSSEViewer dsse={mockDSSE} />);
+		render(
+			<RekorClientProvider>
+				<DSSEViewer dsse={mockDSSE} />
+			</RekorClientProvider>,
+		);
 		expect(screen.getByText("Hash")).toBeInTheDocument();
 	});
 
