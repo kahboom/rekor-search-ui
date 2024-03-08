@@ -8,6 +8,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
+		"format": "prettier --check --ignore-path .gitignore .",
+		"format:fix": "prettier --write --ignore-path .gitignore .",
 		"lint": "next lint",
 		"generate": "./hack/generate_types.sh"
 	},
