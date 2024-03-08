@@ -18,5 +18,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           dry: true
-          node-version: "20"
+          prettier_version: "3.2.5"
           prettier_options: --check .
