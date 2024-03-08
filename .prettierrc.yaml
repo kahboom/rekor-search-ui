@@ -1,3 +1,4 @@
 useTabs: true
 arrowParens: avoid
 singleAttributePerLine: true
+tabWidth: 2
