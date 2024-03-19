@@ -22,6 +22,14 @@ import { Explorer } from "./Explorer";
 import userEvent from "@testing-library/user-event";
 
 describe("Explorer", () => {
+	// jest.mock("../api/rekor_api", () => ({
+	// 	useRekorSearch: jest.fn(() =>
+	// 		jest.fn().mockImplementation(() => {
+	// 			return Promise.resolve({ entries: [], totalCount: 0 });
+	// 		}),
+	// 	),
+	// }));
+
 	it("should render search form and display search button", () => {
 		render(
 			<RekorClientProvider>
@@ -68,11 +76,12 @@ describe("Explorer", () => {
 		await waitFor(() => expect(screen.queryByRole("status")).toBeNull());
 
 		expect(
-			screen.findByLabelText("Showing").then(res => {
-				screen.debug();
-				console.log(res);
-				expect(res).toBeInTheDocument();
-			}),
+			screen
+				.findByLabelText("Showing" || "No matching entries found")
+				.then(res => {
+					console.log(res);
+					expect(res).toBeInTheDocument();
+				}),
 		);
 	});
 });
