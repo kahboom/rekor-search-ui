@@ -26,7 +26,7 @@ function isRekorError(error: unknown): error is RekorError {
 	return !!error && typeof error === "object";
 }
 
-function Error({ error }: { error: unknown }) {
+export function RekorError({ error }: { error: unknown }) {
 	let title = "Unknown error";
 	let detail: string | undefined;
 
@@ -47,6 +47,7 @@ function Error({ error }: { error: unknown }) {
 			sx={{ mt: 3 }}
 			severity="error"
 			variant="filled"
+			role={"alert"}
 		>
 			<AlertTitle>{title}</AlertTitle>
 			{detail}
@@ -188,7 +189,7 @@ export function Explorer() {
 			/>
 
 			{error ? (
-				<Error error={error} />
+				<RekorError error={error} />
 			) : loading ? (
 				<LoadingIndicator />
 			) : (
