@@ -19,17 +19,8 @@ beforeEach(() => {
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { RekorClientProvider } from "../api/context";
 import { Explorer } from "./Explorer";
-import userEvent from "@testing-library/user-event";
 
 describe("Explorer", () => {
-	// jest.mock("../api/rekor_api", () => ({
-	// 	useRekorSearch: jest.fn(() =>
-	// 		jest.fn().mockImplementation(() => {
-	// 			return Promise.resolve({ entries: [], totalCount: 0 });
-	// 		}),
-	// 	),
-	// }));
-
 	it("should render search form and display search button", () => {
 		render(
 			<RekorClientProvider>
