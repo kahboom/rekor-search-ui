@@ -13,7 +13,7 @@ jest.mock("../x509/decode", () => ({
 	decodex509: decodex509Mock,
 }));
 
-describe("IntotoViewer", () => {
+describe("IntotoViewer002", () => {
 	beforeAll(() => {
 		atobMock();
 	});

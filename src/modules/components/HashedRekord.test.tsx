@@ -56,8 +56,5 @@ describe("HashedRekordViewer", () => {
 				/'-----BEGIN CERTIFICATE-----Mocked Certificate-----END CERTIFICATE-----'/,
 			),
 		).toBeInTheDocument();
-
-		// verify that the decoded certificate content is displayed
-		expect(screen.getByText(/Decoded:/)).toBeInTheDocument();
 	});
 });

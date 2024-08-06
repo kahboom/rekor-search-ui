@@ -38,7 +38,9 @@ describe("Explorer", () => {
 		);
 
 		expect(screen.getByLabelText("Attribute")).toBeInTheDocument();
-		expect(screen.getByRole("textbox", { name: "Email" })).toBeInTheDocument();
+		expect(
+			screen.getByRole("textbox", { name: "Email input field" }),
+		).toBeInTheDocument();
 		expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
 	});
 

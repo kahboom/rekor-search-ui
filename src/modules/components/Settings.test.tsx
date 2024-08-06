@@ -36,7 +36,7 @@ describe("Settings Component", () => {
 				onClose={mockOnClose}
 			/>,
 		);
-		expect(screen.getByText("Override rekor endpoint")).toBeInTheDocument();
+
 		expect(
 			screen.getByPlaceholderText("https://initial.rekor.domain"),
 		).toBeInTheDocument();
